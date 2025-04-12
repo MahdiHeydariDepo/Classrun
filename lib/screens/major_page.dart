@@ -11,12 +11,12 @@ class MajorPage extends StatelessWidget {
         children: [
           Container(
             decoration: BoxDecoration(
-              color: Color(0xFF9C7DCA),
-              borderRadius: BorderRadius.only(
+              color: const Color(0xFF9C7DCA),
+              borderRadius: const BorderRadius.only(
                 bottomLeft: Radius.circular(20),
                 bottomRight: Radius.circular(20),
               ),
-              boxShadow: [
+              boxShadow: const [
                 BoxShadow(
                   color: Colors.black12,
                   blurRadius: 6,
@@ -24,30 +24,54 @@ class MajorPage extends StatelessWidget {
                 ),
               ],
             ),
-            padding: const EdgeInsets.only(top: 50, bottom: 20, right: 20, left: 20),
+            padding: const EdgeInsets.only(
+              top: 50,
+              bottom: 20,
+              right: 20,
+              left: 20,
+            ),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.end,
               children: [
                 Row(
                   children: [
-                    Icon(Icons.arrow_back_ios, color: Colors.white),
-                    Spacer(),
+                    IconButton(
+                      icon: const Icon(
+                        Icons.arrow_back_ios_new,
+                        color: Colors.white,
+                      ),
+                      onPressed: () {
+                        Navigator.pop(context);
+                      },
+                    ),
+                    const Spacer(),
                     ElevatedButton(
-                      onPressed: () {},
-                      child: Text("بعدی"),
+                      onPressed: () {
+                        Navigator.pushNamed(
+                          context,
+                          '/courselist',
+                        ); // ✅ Navigate here
+                      },
                       style: ElevatedButton.styleFrom(
                         backgroundColor: Colors.white,
-                        foregroundColor: Color(0xFF9C7DCA),
+                        foregroundColor: const Color(0xFF9C7DCA),
                         elevation: 4,
-                        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10),
+                        ),
                       ),
+                      child: const Text("بعدی"),
                     ),
                   ],
                 ),
-                SizedBox(height: 20),
-                Text(
+                const SizedBox(height: 20),
+                const Text(
                   "رشته ها",
-                  style: TextStyle(color: Colors.white, fontSize: 20, fontWeight: FontWeight.bold),
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
+                  ),
                   textAlign: TextAlign.right,
                 ),
               ],
@@ -59,8 +83,10 @@ class MajorPage extends StatelessWidget {
               textAlign: TextAlign.right,
               decoration: InputDecoration(
                 hintText: "رشته موردنظر را وارد کنید",
-                prefixIcon: Icon(Icons.search),
-                border: OutlineInputBorder(borderRadius: BorderRadius.circular(12)),
+                prefixIcon: const Icon(Icons.search),
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(12),
+                ),
                 fillColor: Colors.white,
                 filled: true,
               ),
@@ -72,21 +98,26 @@ class MajorPage extends StatelessWidget {
               padding: const EdgeInsets.symmetric(horizontal: 8),
               child: Card(
                 elevation: 4,
-                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(12),
+                ),
                 child: Column(
                   children: [
-                    Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                    const Padding(
+                      padding: EdgeInsets.symmetric(
+                        horizontal: 16,
+                        vertical: 8,
+                      ),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: const [
+                        children: [
                           Text("انتخاب"),
                           Text("نام رشته"),
                           Text("کد رشته"),
                         ],
                       ),
                     ),
-                    Divider(),
+                    const Divider(),
                     Expanded(
                       child: ListView(
                         children: [
@@ -115,10 +146,7 @@ class MajorPage extends StatelessWidget {
       controlAffinity: ListTileControlAffinity.leading,
       title: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          Text(name),
-          Text(code),
-        ],
+        children: [Text(name), Text(code)],
       ),
     );
   }

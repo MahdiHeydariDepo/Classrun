@@ -18,7 +18,9 @@ class UniversityPage extends StatelessWidget {
               padding: const EdgeInsets.symmetric(horizontal: 8),
               child: Card(
                 elevation: 4,
-                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(12),
+                ),
                 child: Column(
                   children: [
                     _buildTableHeader(["کد دانشگاه", "نام دانشگاه", "انتخاب"]),
@@ -65,7 +67,12 @@ class UniversityPage extends StatelessWidget {
         children: [
           Row(
             children: [
-              const Icon(Icons.arrow_back_ios, color: Colors.white),
+              IconButton(
+                icon: const Icon(Icons.arrow_back_ios_new, color: Colors.white),
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+              ),
               const Spacer(),
               ElevatedButton(
                 onPressed: onNext,
@@ -73,13 +80,22 @@ class UniversityPage extends StatelessWidget {
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.white,
                   foregroundColor: Color(0xFF9C7DCA),
-                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10),
+                  ),
                 ),
               ),
             ],
           ),
           const SizedBox(height: 20),
-          Text(title, style: const TextStyle(color: Colors.white, fontSize: 20, fontWeight: FontWeight.bold)),
+          Text(
+            title,
+            style: const TextStyle(
+              color: Colors.white,
+              fontSize: 20,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
         ],
       ),
     );
